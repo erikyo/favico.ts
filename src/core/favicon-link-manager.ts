@@ -106,7 +106,7 @@ export class FaviconLinkManager {
 		}
 		if (this.originalLinks.length > 0) {
 			const last = this.originalLinks[this.originalLinks.length - 1];
-			if (last && last.element) {
+			if (last?.element) {
 				return last.element.getAttribute("href");
 			}
 		}
@@ -183,7 +183,7 @@ export class FaviconLinkManager {
 	public destroy(): void {
 		this.reset();
 		for (const state of this.originalLinks) {
-			if (state.created && state.element && state.element.parentNode) {
+			if (state.created && state.element?.parentNode) {
 				state.element.parentNode.removeChild(state.element);
 			}
 		}

@@ -67,11 +67,10 @@
     "typescript": "^5.7.2",
     "vitest": "^3.0.0"
   },
-  "private": true,
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/placeholder/favico.ts.git"
+    "url": "https://github.com/erikyo/favico.ts.git"
   },
   "publishConfig": {
     "access": "public"

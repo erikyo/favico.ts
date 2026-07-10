@@ -137,7 +137,7 @@ export class Favico {
 		if (baseHref) {
 			try {
 				baseImage = await this.imageLoader.loadImage(baseHref);
-			} catch (e) {
+			} catch (_e) {
 				baseImage = this.imageLoader.createFallback(
 					this.globalOptions.fallbackSize,
 				);
@@ -180,7 +180,7 @@ export class Favico {
 		try {
 			const url = canvas.toDataURL("image/png");
 			this.linkManager.setIconSrc(url);
-		} catch (e) {
+		} catch (_e) {
 			// Canvas taint errors
 			throw new EnvironmentError("Canvas is tainted and cannot be exported");
 		}
