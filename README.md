@@ -23,16 +23,14 @@ Favico.ts adds notification badges, images, video frames, and webcam streams to 
 
 ## Live Demo
 
-▶️ **[Try the Interactive Demo](https://placeholder.github.io/favico.ts/)**
+▶️ **[Try the Interactive Demo](https://erikyo.github.io/favico.ts/)**
 
-![Demo Screenshot](https://raw.githubusercontent.com/placeholder/favico.ts/main/demo/public/screenshot-placeholder.png)
-
-The [demo source code](https://github.com/placeholder/favico.ts/tree/main/demo) is available in the repository.
+The [demo source code](https://github.com/erikyo/favico.ts/tree/main/demo) is available in the repository.
 
 ### Try it locally
 
 ```bash
-git clone https://github.com/placeholder/favico.ts.git
+git clone https://github.com/erikyo/favico.ts.git
 cd favico.ts
 npm install
 npm run build
