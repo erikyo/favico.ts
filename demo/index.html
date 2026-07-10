@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="A modern, framework-independent TypeScript successor to Favico.js" />
+  <title>favico.ts - Interactive Demonstration</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" id="favicon" />
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <h1>favico.ts</h1>
+      <p>A modern, framework-independent TypeScript successor to Favico.js.</p>
+      
+      <div class="install-commands">
+        <code id="npm-install">npm install favico.ts</code>
+        <button type="button" aria-label="Copy npm install command" data-copy="npm install favico.ts">Copy</button>
+      </div>
+
+      <div class="notice">
+        <strong>Look up!</strong> Watch the browser tab as you interact with the demo.
+      </div>
+    </div>
+  </header>
+
+  <main class="container layout">
+    
+    <div class="sidebar">
+      <section class="preview-panel" aria-labelledby="preview-title">
+        <h2 id="preview-title">Live Preview</h2>
+        <div class="preview-container">
+          <div class="preview-box">
+            <span>Original</span>
+            <img src="/favicon.svg" alt="Original Favicon" width="64" height="64" />
+          </div>
+          <div class="preview-box">
+            <span>Generated</span>
+            <img id="generated-preview" src="/favicon.svg" alt="Generated Favicon" width="64" height="64" />
+          </div>
+        </div>
+        <div class="status-panel">
+          <div class="status-row"><strong>Value:</strong> <span id="status-value">None</span></div>
+          <div class="status-row"><strong>Active source:</strong> <span id="status-source">Base</span></div>
+          <div class="status-row">
+            <strong>Data URL length:</strong> <span id="status-data-length">N/A</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="code-panel" aria-labelledby="code-title">
+        <h2 id="code-title">Generated Code</h2>
+        
+        <div class="tabs" role="tablist">
+          <button role="tab" aria-selected="true" aria-controls="code-esm" id="tab-esm">ESM</button>
+          <button role="tab" aria-selected="false" aria-controls="code-cjs" id="tab-cjs">CJS</button>
+          <button role="tab" aria-selected="false" aria-controls="code-react" id="tab-react">React</button>
+          <button role="tab" aria-selected="false" aria-controls="code-next" id="tab-next">Next.js</button>
+        </div>
+
+        <div class="tab-panel active" role="tabpanel" id="code-esm" aria-labelledby="tab-esm">
+          <pre><code id="code-block-esm"></code></pre>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="code-cjs" aria-labelledby="tab-cjs" hidden>
+          <pre><code id="code-block-cjs"></code></pre>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="code-react" aria-labelledby="tab-react" hidden>
+          <pre><code id="code-block-react"></code></pre>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="code-next" aria-labelledby="tab-next" hidden>
+          <pre><code id="code-block-next"></code></pre>
+        </div>
+
+        <button type="button" id="copy-code-btn" aria-label="Copy generated code">Copy Code</button>
+        <span id="copy-feedback" aria-live="polite"></span>
+      </section>
+
+      <section class="compatibility-panel" aria-labelledby="compat-title">
+        <h2 id="compat-title">Compatibility Inspector</h2>
+        <ul id="compat-list">
+          <!-- Populated by JS -->
+        </ul>
+      </section>
+
+      <section class="error-console" aria-labelledby="console-title">
+        <h2 id="console-title">Event & Error Console</h2>
+        <div id="console-output" role="log" aria-live="polite"></div>
+        <button type="button" id="clear-console-btn">Clear Console</button>
+      </section>
+
+    </div>
+
+    <div class="content">
+      
+      <section class="playground-section" aria-labelledby="badge-title">
+        <h2 id="badge-title">Badge Playground</h2>
+        
+        <div class="controls-grid">
+          <div class="control-group">
+            <label for="badge-value">Value</label>
+            <div class="input-row">
+              <input type="text" id="badge-value" placeholder="1, NEW, etc." />
+              <button type="button" id="badge-dec" aria-label="Decrement">-</button>
+              <button type="button" id="badge-inc" aria-label="Increment">+</button>
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label>Presets</label>
+            <div class="preset-buttons">
+              <button type="button" data-badge="1">1</button>
+              <button type="button" data-badge="9">9</button>
+              <button type="button" data-badge="10">10</button>
+              <button type="button" data-badge="99">99</button>
+              <button type="button" data-badge="100">100</button>
+              <button type="button" data-badge="999">999</button>
+              <button type="button" data-badge="1000">1000</button>
+              <button type="button" data-badge="NEW">NEW</button>
+              <button type="button" id="badge-clear">Clear (0)</button>
+              <button type="button" id="badge-random">Random</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-grid">
+          <div class="control-group">
+            <label for="badge-type">Type</label>
+            <select id="badge-type">
+              <option value="circle">circle</option>
+              <option value="rectangle">rectangle</option>
+            </select>
+          </div>
+          
+          <div class="control-group">
+            <label for="badge-animation">Animation</label>
+            <select id="badge-animation">
+              <option value="slide">slide</option>
+              <option value="fade">fade</option>
+              <option value="pop">pop</option>
+              <option value="popFade">popFade</option>
+              <option value="none">none</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="badge-position">Position</label>
+            <select id="badge-position">
+              <option value="down">down</option>
+              <option value="up">up</option>
+              <option value="left">left</option>
+              <option value="leftup">leftup</option>
+              <option value="upleft">upleft</option>
+            </select>
+          </div>
+          
+          <div class="control-group">
+            <label for="badge-bg-color">Background Color</label>
+            <input type="color" id="badge-bg-color" value="#dd0000" />
+            <input type="text" id="badge-bg-color-text" value="#dd0000" aria-label="Background Color Hex" />
+          </div>
+
+          <div class="control-group">
+            <label for="badge-text-color">Text Color</label>
+            <input type="color" id="badge-text-color" value="#ffffff" />
+            <input type="text" id="badge-text-color-text" value="#ffffff" aria-label="Text Color Hex" />
+          </div>
+
+          <div class="control-group">
+            <label for="badge-font">Font Family</label>
+            <input type="text" id="badge-font" value="sans-serif" />
+          </div>
+
+          <div class="control-group">
+            <label for="badge-font-style">Font Style</label>
+            <input type="text" id="badge-font-style" value="bold" />
+          </div>
+        </div>
+
+        <h3>Stress Tests & Instances</h3>
+        <div class="preset-buttons">
+          <button type="button" id="test-rapid">Rapid Updates (10x)</button>
+          <button type="button" id="test-unread">Simulate Unread Interval</button>
+          <button type="button" id="test-stop">Stop Simulation</button>
+          <button type="button" id="test-huge">Huge Value (10000)</button>
+          <button type="button" id="test-reset">Reset Favicon</button>
+          <button type="button" id="test-destroy">Destroy Instance</button>
+          <button type="button" id="test-recreate">Recreate Instance</button>
+        </div>
+      </section>
+
+      <section class="playground-section" aria-labelledby="image-title">
+        <h2 id="image-title">Image Playground</h2>
+        <p>Draw an image over the favicon canvas.</p>
+        
+        <div class="controls-grid">
+          <div class="control-group">
+            <label>Bundled Samples</label>
+            <div class="preset-buttons">
+              <button type="button" id="img-sample-avatar">Avatar</button>
+              <button type="button" id="img-sample-status">Status</button>
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label for="img-url">Custom URL</label>
+            <div class="input-row">
+              <input type="text" id="img-url" placeholder="https://..." />
+              <button type="button" id="img-load-url">Load</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label for="img-upload">Local Upload</label>
+            <input type="file" id="img-upload" accept="image/*" />
+          </div>
+
+          <div class="control-group">
+            <label>Raw Source (Bypass Canvas)</label>
+            <button type="button" id="img-raw">rawImageSrc()</button>
+            <p class="help-text">Raw sources replace the favicon URL directly, which may prevent them from acting as the base image for subsequent badges.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="playground-section" aria-labelledby="video-title">
+        <h2 id="video-title">Video Playground</h2>
+        <p>Render video frames to the favicon.</p>
+        
+        <video id="sample-video" src="/sample-video.mp4" loop muted playsinline width="320" controls></video>
+        
+        <div class="preset-buttons" style="margin-top: 1rem;">
+          <button type="button" id="video-start">startVideo()</button>
+          <button type="button" id="video-stop">stopVideo()</button>
+        </div>
+      </section>
+
+      <section class="playground-section" aria-labelledby="webcam-title">
+        <h2 id="webcam-title">Webcam Playground</h2>
+        <p>Requires HTTPS or localhost. Explicit permission will be requested.</p>
+        
+        <div class="preset-buttons">
+          <button type="button" id="webcam-start">startWebcam()</button>
+          <button type="button" id="webcam-stop">stopWebcam()</button>
+        </div>
+        <p class="help-text" id="webcam-status">Webcam inactive.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

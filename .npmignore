@@ -1,0 +1,13 @@
+src/
+test/
+examples/
+.idea/
+demo/
+vitest.config.ts
+vitest.workspace.ts
+tsconfig.json
+tsup.config.ts
+.github/
+.gitignore
+implementation_plan.md
+final_report.md

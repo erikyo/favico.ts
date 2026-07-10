@@ -1,0 +1,79 @@
+{
+  "name": "favico.ts",
+  "version": "1.0.0",
+  "author": "Erik <erik@codekraft.it>",
+  "description": "Modernized TypeScript port of Favico.js for badges and favicon animations.",
+  "keywords": [
+    "favicon",
+    "badge",
+    "notification",
+    "canvas",
+    "typescript"
+  ],
+  "homepage": "https://github.com/erikyo/favico.ts#readme",
+  "bugs": {
+    "url": "https://github.com/erikyo/favico.ts/issues"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/favico.global.min.js",
+  "jsdelivr": "./dist/favico.global.min.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "src",
+    "examples",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "node -e \"const fs = require('fs'); fs.rmSync('dist', { recursive: true, force: true }); fs.rmSync('coverage', { recursive: true, force: true });\"",
+    "build": "tsup && tsc --emitDeclarationOnly --outDir dist",
+    "lint": "biome check src test",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --project unit",
+    "test:browser": "vitest run --project browser --browser.headless",
+    "coverage": "vitest run --project unit --coverage",
+    "pack:check": "npm pack --dry-run",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run test:browser && npm run build && npm run pack:check",
+    "prepublishOnly": "npm run check",
+    "demo:dev": "npm run dev --prefix demo",
+    "demo:build": "npm run build --prefix demo",
+    "demo:test": "npm run test --prefix demo"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.3",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.10.1",
+    "@vitest/browser": "^3.0.0",
+    "@vitest/coverage-v8": "^3.0.0",
+    "jsdom": "^26.0.0",
+    "playwright": "^1.50.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.0"
+  },
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/placeholder/favico.ts.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
