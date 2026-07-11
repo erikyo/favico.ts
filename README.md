@@ -3,6 +3,9 @@
 [![npm version](https://img.shields.io/npm/v/favico.ts.svg)](https://www.npmjs.com/package/favico.ts)
 [![license](https://img.shields.io/npm/l/favico.ts.svg)](LICENSE)
 
+<img width="1672" height="941" alt="favicots-banner" src="https://github.com/user-attachments/assets/2e7529d2-92b2-4bf4-bd53-d46a9742b118" />
+
+
 A modern, framework-independent TypeScript successor to [Favico.js](https://github.com/ejci/favico.js).
 
 Favico.ts adds notification badges, images, video frames, and webcam streams to the browser favicon. It preserves the familiar Favico.js API where practical while adding strict TypeScript types, SSR-safe imports, ESM/CommonJS builds, modern media APIs, and explicit cleanup.
